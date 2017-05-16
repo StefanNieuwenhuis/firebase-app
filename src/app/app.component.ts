@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,17 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: FirebaseListObservable<any[]>;
+  user: Observable<firebase.User>;
 
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('/items');
+  constructor(public afAuth: AngularFireAuth) {
+    this.user = afAuth.authState;
   }
 
+  login() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }
