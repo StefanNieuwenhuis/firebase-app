@@ -15,9 +15,9 @@ import { environment } from '../environments/environment'
 
 import 'hammerjs';
 
-
-import {HomeModule} from './home/home.module';
-import {LoginModule} from './login/login.module';
+import { LoginModule } from './login/login.module';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
 
@@ -36,13 +36,10 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HomeModule,
+    
     LoginModule,
-
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
-
+    CoreModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

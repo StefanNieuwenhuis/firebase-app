@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GuardService } from '../shared/services/guard.service';
+import {MdToolbarModule} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.guardService.login();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
 }
