@@ -3,13 +3,20 @@ import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 
 import { MdToolbarModule } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
+
+import { GuardService } from '../shared/services/guard.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    MdToolbarModule
+    MdToolbarModule,
+    MdButtonModule,
+    MdIconModule
   ],
   exports: [NavComponent],
-  declarations: [NavComponent]
+  declarations: [NavComponent],
+  providers: [GuardService]
 })
 export class CoreModule { }

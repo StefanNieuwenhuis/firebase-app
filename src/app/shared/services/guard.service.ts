@@ -9,6 +9,7 @@ export class GuardService {
 
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
+    
   }
 
   login() {
@@ -19,5 +20,7 @@ export class GuardService {
     this.afAuth.auth.signOut();
   }
 
-  
+  isAuth(){
+    firebase.auth().getRedirectResult().then(x => x.user !== null ? true : false);
+  }
 }
